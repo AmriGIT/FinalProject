@@ -72,7 +72,11 @@ class BoxSearching extends Component {
   render() {
     console.log('Render Data', this.state.renderData);
     const post = this.state.renderData.map((post, i) => (
-      <Text key={i + 17}>{post.tujuan}</Text>
+      <View>
+        <Text key={i + 17}>{post.tujuan}</Text>
+        <Text key={i + 17}>{post.isidisposisi}</Text>
+        <Text key={i + 17}>{post.tgl_dispo}</Text>
+      </View>
     ));
     if (this.state.renderData === []) {
       return <Text>Proses</Text>;
