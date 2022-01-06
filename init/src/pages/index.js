@@ -1,6 +1,7 @@
 import Home from './home';
-import Contact from './contact';
 import Login from './login';
-
-
-export { Home, Contact, Login }
+import SuratKeluar from './suratkeluar'
+import SuratMasuk from './suratmasuk'
+import Disposisi from './disposisi'
+import Logout from './logout';
+export { Home, Login,SuratKeluar, SuratMasuk, Disposisi, Logout}

@@ -1,29 +1,61 @@
-import React, { Component } from 'react';
-import Menu from '../components/menu';
-
+import React, { Component } from "react";
+import { Row, Navbar as Navbarbro, Container, Nav } from "react-bootstrap";
+import { connect } from "react-redux";
+import Menu from "../components/menu";
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLogin: false,
+    };
+  }
 
-    render() {
-        return (
-            <div style={{
-                marginTop: 10,
-                display: 'flex',
-                justifyContent: "flex-start",
-                gap: 10,
-                alignItems: "center"
-            }}>
-                <Menu color="red" fn={() => this.props.goToPage("home")}>Home</Menu>
-                <Menu color="green" fn={() => this.props.goToPage("contact")}>Contact</Menu>
-                <Menu color="blue" fn={() => this.props.goToPage("login")}>Log In</Menu>
-            </div>
-        );
-    }
+  // componentDidMount =()=>{
+  //   this.setState({
+  //     isLogin : this.props.sts2
+  //   })
+  // }
+  render() {
+    return (
+      <Row>
+        <Navbarbro style={{ backgroundColor: "#439889" }} variant="dark">
+          <Container>
+            <Nav className="me-auto">
+              <Menu target="/">Home</Menu>
+              {!this.props.statusLogin ? (
+                <Menu target="/login-master">Login Master</Menu>
+              ) : (
+                ""
+              )}
+              {this.props.statusLogin ? (
+                <Menu target="/suratkeluar">Surat Keluar</Menu>
+              ) : (
+                ""
+              )}
+              {this.props.statusLogin ? (
+                <Menu target="/suratmasuk">Surat Masuk</Menu>
+              ) : (
+                ""
+              )}
+              {this.props.statusLogin ? (
+                <Menu target="/disposisi">Disposisi</Menu>
+              ) : (
+                ""
+              )}
+              {this.props.statusLogin ? (
+                <Menu target="/logout">Logout</Menu>
+              ) : (
+                ""
+              )}
+            </Nav>
+          </Container>
+        </Navbarbro>
+      </Row>
+    );
+  }
 }
-
-export default Navbar;
+const mapStateToProps = (state) => ({
+  statusLogin: state.loginRedux.statusLogin,
+});
+export default connect(mapStateToProps)(Navbar);

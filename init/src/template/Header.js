@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React from "react";
+import { Row } from "react-bootstrap";
 
-
-class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
-    render() {
-        return (
-            <div style={{
-                height: 120,
-                backgroundColor: 'lightgray'
-            }} />
-        );
-    }
-}
+const Header = () => {
+  return (
+    <Row>
+      <div
+        style={{
+          height: 120,
+          backgroundColor: "#00695c",
+        }}
+      />
+    </Row>
+  );
+};
 
 export default Header;
